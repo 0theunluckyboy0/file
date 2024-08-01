@@ -1,41 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full-Screen Video Player</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generate Hyperlink</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    input[type="text"] {
+        padding: 10px;
+        margin: 10px;
+        width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    a {
+        display: block;
+        margin: 20px;
+        text-decoration: none;
+        color: #007bff;
+        font-size: 18px;
+    }
+</style>
 </head>
 <body>
-    <input type="text" id="videoUrl" placeholder="Enter Video URL">
-    <button onclick="playVideo()">Play</button>
-    <div id="videoContainer" style="display: none;">
-        <video controls id="fullScreenVideo">
-            Your browser does not support the video tag.
-        </video>
-    </div>
+    <input type="text" id="urlInput" placeholder="Enter URL">
+    <button onclick="generateLink()">Generate</button>
+    <div id="linkContainer"></div>
 
     <script>
-        function playVideo() {
-            const videoUrl = document.getElementById('videoUrl').value;
-            const video = document.getElementById('fullScreenVideo');
-            video.src = videoUrl;
-            document.getElementById('videoContainer').style.display = 'block';
-            video.requestFullscreen();
-            video.play();
+        function generateLink() {
+            var url = document.getElementById("urlInput").value;
+            var linkContainer = document.getElementById("linkContainer");
+            var link = document.createElement("a");
+            link.href = url;
+            link.textContent = url;
+            linkContainer.appendChild(link);
         }
     </script>
 </body>
